@@ -1,0 +1,53 @@
+  <div class="card flex justify-content-center" style="border: none;">
+      <p-button (click)="showDialog()" icon="pi pi-external-link" label="Create"></p-button>
+      <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+          <ng-template pTemplate="header">
+              <span class="text-xl font-bold">Tweet</span>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <span class="text-xl font-bold">User_id :</span>
+          <input pInputText id="user_id" [(ngModel)]="tweetRequest.user_id">
+          <span class="text-xl font-bold">Tweet : </span>
+          <input pInputText id="tweet" [(ngModel)]="tweetRequest.tweet">
+        </ng-template>
+          <ng-template pTemplate="footer">
+              <p-button icon="pi pi-check" (click)="onCreate(tweetRequest)" label="" styleClass="p-button-text"></p-button>
+          </ng-template>
+      </p-dialog>
+  </div>
+<div class="table-container" style="display: flex; justify-content: center; align-items: center;">
+  
+ 
+    
+  <table class="table">
+      <thead>
+       
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Tweet</th>
+          <th scope="col">Liked</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let tweet of tweets">
+        
+        <tr>
+          <th scope="row">{{tweet.id}}</th>
+          <td>{{tweet.tweet}}</td>
+          <td>{{tweet.liked}}</td>
+         
+          <td>
+            <!-- Delete Butonu -->
+            
+            <button class="btn btn-primary btn-trash" (click)="onDelete(tweet.id)">Sil</button>
+            
+    
+          </td>
+        </tr>
+     
+      </tbody>
+    </table>
+    </div>
+
+
+   
+    

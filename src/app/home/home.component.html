@@ -1,0 +1,76 @@
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg " style="background-color: #303F9F" >
+    <div class="container-fluid" style=" display: flex; justify-content: space-between;">
+      <div>
+        <a style="color: white;" class="navbar-brand" href="home">DashBoard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav" >
+        <ul class="navbar-nav w-100" style=" display: flex; justify-content: space-between; flex-direction: row; align-items: center;" >
+            <div style="color: white;" >
+                
+            </div>
+         <div  style=" width: 15%; display: flex; justify-content: space-around;">
+            <li class="nav-item " style="width: 50%; display: flex; justify-content: center; align-items: center;" >
+                <i class="pi pi-user" style="color: white;"></i>
+                <a style="color: white; text-decoration: none;"  class="nav-link active" aria-current="page">{{currentUser!.userName}}</a>
+              </li>
+              <li class="nav-item-out" style=" width: 50%; display: flex; justify-content: center; align-items: center;">
+                <i class="pi pi-sign-out" style="color: white;"></i>
+                <a  style="color: white; text-decoration: none;"  class="nav-link" href="#">Çıkış </a>
+              </li>
+         </div>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+
+    <ul class="nav nav-pills nav-stacked" style="border-right:1px solid black ">
+        <!--<li class="nav-header"></li>-->
+        <li><a href="home"><i class="fa fa-dashboard" style="margin-right:3px ;"></i> Anasayfa</a></li>
+        <li> <a [ngClass]="{ 'active': currentContent === 'tweets' ,  'custom-menu-item': true}" (click)="changeContent('tweets')"><i class="fa fa-dashboard" style="margin-right:3px ;"></i>Tweetlerim</a>
+        </li>
+        <li> <a [ngClass]="{ 'active': currentContent === 'info' ,  'custom-menu-item': true}" (click)="changeContent('info')"><i class="fa fa-dashboard" style="margin-right:3px ;"></i>Ayarlar</a>
+        </li>
+
+    </ul>
+</div>
+    
+    
+  
+
+
+
+
+ 
+      <div  id="dashboard" *ngIf="currentContent === 'dashboard'" >
+        <app-dashboard></app-dashboard>
+               </div>
+     
+
+      <div  id="info" *ngIf="currentContent === 'info'" >
+   <app-info></app-info>
+          </div>
+
+
+
+  
+      <div  id="tweets" *ngIf="currentContent === 'tweets'">
+        <app-tweet></app-tweet>
+      </div>
+
+
